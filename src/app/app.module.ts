@@ -1,0 +1,19 @@
+import { Module } from '@nestjs/common';
+import { DatabaseModule } from '../infrastructure/database/database.module.js';
+
+/**
+ * Модули с исключительно пользовательским функционалом, описывающиеся в публичной документации.
+ */
+export const PUBLIC_MODULES = [];
+
+/**
+ * Модули с системным функционалом, не описывающиеся в публичной документации.
+ */
+const privateModules = [];
+
+export const ALL_MODULES = [...PUBLIC_MODULES, ...privateModules];
+
+@Module({
+  imports: [DatabaseModule, ...ALL_MODULES],
+})
+export class AppModule {}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "lib": [
+      "ESNext"
+      // "DOM",                                   // Для frontend проектов
+      // "DOM.Iterable"                           // Для frontend проектов
+    ],
+    "baseUrl": "../",
+    "rootDirs": ["../src"],
+    "outDir": "../dist",
+
+    /* Настройки сборщика */
+    "resolveJsonModule": true,
+    // Включено из-за использования SWC.
+    "noEmit": true,
+    "removeComments": true,
+    // "allowSyntheticDefaultImports": true,      // Стандартное при "esModuleInterop: true"
+    // "esModuleInterop": true,                   // Стандартное при "module: NodeNext"
+    // "forceConsistentCasingInFileNames": true,  // Стандартное
+    // "isolatedModules": true,                   // Стандартное при "verbatimModuleSyntax: true"
+    "verbatimModuleSyntax": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    // "jsx": "react-jsx",                        // Для frontend проектов
+    "incremental": true,
+    "skipLibCheck": true,
+
+    /* Настройки линтинга */
+    "allowUnusedLabels": false,
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    // Отключено из-за возможности наличия слишком сложных для описания типов.
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // Отключено из-за DTO классов, где не всегда нужен конструктор.
+    "strictPropertyInitialization": false,
+    // Отключено из-за большого количества бойлерплейта.
+    "useUnknownInCatchVariables": false,
+    // Необходимо для тестов, которые исполняются в TS среде и требуют соответствующих импортов.
+    "allowImportingTsExtensions": true
+  },
+  "include": ["../**/*"],
+  "exclude": ["node_modules", "dist"]
+}

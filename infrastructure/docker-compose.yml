@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: fsp.postgres
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - ${DATABASE_VOLUME:-../database}:/var/lib/postgresql/data
+
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-local}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-password}
+      POSTGRES_DB: ${DATABASE_NAME:-postgres}
+
+    restart: unless-stopped
+
+  backend:
+    container_name: fsp.backend
+    build:
+      context: ../
+      dockerfile: ./infrastructure/Dockerfile
+
+    ports:
+      - "3000:3000"
+
+    restart: unless-stopped
