@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:alpine
-    container_name: fsp.postgres
+    container_name: vibe-go.postgres
 
     ports:
       - "5432:5432"
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   backend:
-    container_name: fsp.backend
+    container_name: vibe-go.backend
     build:
       context: ../
       dockerfile: ./infrastructure/Dockerfile

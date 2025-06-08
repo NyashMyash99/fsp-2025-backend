@@ -1,5 +1,5 @@
 {
-  "name": "vibego-backend",
+  "name": "vibe-go-backend",
   "version": "1.0.0",
   "author": {
     "name": "Daniil Koshkin",
@@ -8,23 +8,20 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "nest start --watch -c infrastructure/dev/nest-cli.json",
-    "build": "nest build -c infrastructure/prod/nest-cli.json",
+    "dev": "nest start --watch -c ./infrastructure/dev/nest-cli.json",
+    "build": "nest build -c ./infrastructure/prod/nest-cli.json",
     "prod": "node ./dist/main.js",
-
     "typeorm:cli": "typeorm-ts-node-esm -d ./scripts/cli-data-source.ts",
     "migration:generate": "npm run typeorm:cli -- migration:generate ./src/infrastructure/database/migrations/RenameMe",
     "migration:run": "npm run typeorm:cli -- migration:run",
     "migration:revert": "npm run typeorm:cli -- migration:revert",
-
-    "lint": "eslint --cache . -c infrastructure/.eslintrc.cjs"
+    "lint": "eslint --cache . -c ./infrastructure/.eslintrc.cjs"
   },
   "dependencies": {
     "@fastify/static": "^8.2.0",
     "@nestjs/common": "^11.1.3",
     "@nestjs/core": "^11.1.3",
     "@nestjs/platform-fastify": "^11.1.3",
-    "@nestjs/swagger": "^11.2.0",
     "@nestjs/typeorm": "^11.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
