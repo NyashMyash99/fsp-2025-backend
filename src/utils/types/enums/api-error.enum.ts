@@ -1,3 +1,3 @@
 export enum ApiError {
-  VALIDATION_ERROR = 'validation_error',
+  CONVERSATION_NOT_FOUND = 'conversation_not_found',
 }

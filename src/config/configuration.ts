@@ -15,21 +15,11 @@ export const CONFIGURATION = cleanEnv(process.env, {
     default: 'production',
   }),
 
-  // Swagger
-  APP_NAME: str({
-    desc: 'Название приложения для Swagger',
-    default: 'VibeGo',
-  }),
-  APP_VERSION: str({
-    desc: 'Версия приложения для Swagger',
-    default: '1.0.0',
-  }),
-
   // Данные базы
   DATABASE_URL: str({
     desc: 'Подключение к базе данных',
-    example: 'postgresql://local:password@localhost:5432/fsp',
-    devDefault: 'postgresql://local:password@localhost:5432/fsp',
+    example: 'postgresql://local:password@localhost:5432/vibego',
+    devDefault: 'postgresql://local:password@localhost:5432/vibego',
   }),
 
   // Frontend
@@ -54,7 +44,7 @@ export const CONFIGURATION = cleanEnv(process.env, {
   }),
   DATABASE_NAME: str({
     desc: 'Название базы данных при запуске через docker compose',
-    example: 'fsp',
+    example: 'vibego',
     default: '',
   }),
 

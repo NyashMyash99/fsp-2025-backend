@@ -1,10 +1,7 @@
 import 'reflect-metadata';
-import { ALL_MODULES, PUBLIC_MODULES } from './app/app.module.js';
 import type { INestApplication } from '@nestjs/common';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { CONFIGURATION } from './config/configuration.js';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { isDevelopmentMode } from './utils/helpers/development.helper.js';
 
 /**
  * @param appPromise - Приложение, которое необходимо настроить.<br/>
@@ -25,21 +22,6 @@ export async function bootstrap(
       origin: CONFIGURATION.CORS_ALLOWED_CLIENT_URLS.split(','),
       credentials: true,
     });
-
-    // Настраиваем Swagger.
-    const document = SwaggerModule.createDocument(
-      app,
-      new DocumentBuilder()
-        .setTitle(CONFIGURATION.APP_NAME)
-        .setVersion(CONFIGURATION.APP_VERSION)
-        .addBearerAuth()
-        .build(),
-      {
-        include: isDevelopmentMode() ? ALL_MODULES : PUBLIC_MODULES,
-      },
-    );
-
-    SwaggerModule.setup('docs', app, document);
 
     // Настраиваем валидацию.
     app.useGlobalPipes(
